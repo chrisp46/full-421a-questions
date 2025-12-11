@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>QuizMaster</title>
+<link rel="manifest" href="manifest.json" />
+<link rel="icon" href="icons/icon-192.png" />
+<meta name="theme-color" content="#0ea5a4" />
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app" class="light">
+  <header class="topbar">
+    <h1>QuizMaster</h1>
+    <div class="controls">
+      <input id="search" placeholder="Search questions..." />
+      <button id="darkToggle" title="Toggle dark mode">Dark</button>
+      <button id="topResetBtn" title="Reset quiz">Reset</button>
+      <button id="installBtn" style="display:none">Install</button>
+    </div>
+  </header>
+  <main class="main">
+    <nav class="sidebar">
+      <button class="nav-btn" data-view="home">Home</button>
+      <button class="nav-btn" data-view="quiz">Quiz Mode</button>
+      <button class="nav-btn" data-view="study">Study Mode</button>
+      <button class="nav-btn" data-view="flash">Flashcards</button>
+      <button class="nav-btn" data-view="exam">50-q Exam</button>
+      <button class="nav-btn" data-view="favorites">Favorites</button>
+      <button class="nav-btn" data-view="missed">Missed</button>
+      <button class="nav-btn" data-view="analytics">Analytics</button>
+      <button class="nav-btn" data-view="settings">Settings</button>
+    </nav>
+    <section class="content">
+      <div id="homeView" class="view">
+        <h2>Welcome to QuizMaster</h2>
+        <p>Use the sidebar to pick a mode. Your progress is saved automatically. Answers are full-width buttons for easy tapping.</p>
+      </div>
+
+      <div id="quizView" class="view" style="display:none">
+        <div class="progress-wrap"><div id="progressBar" class="progress"><div id="progressFill" class="fill"></div></div></div>
+        <div class="meta">
+          <div id="score">Score: 0/0</div>
+          <div id="qcount">0 questions</div>
+        </div>
+        <div id="card" class="card"></div>
+        <div class="actions"><button id="prevBtn">Previous</button><button id="nextBtn">Next</button><button id="markBtn">★ Favorite</button></div>
+      </div>
+
+      <div id="studyView" class="view" style="display:none">
+        <div id="studyCard" class="card"></div>
+        <div class="actions"><button id="studyNext">Next</button></div>
+      </div>
+
+      <div id="flashView" class="view" style="display:none">
+        <div id="flashCard" class="card flash"></div>
+        <div class="actions"><button id="flipBtn">Flip</button><button id="flashNext">Next</button></div>
+      </div>
+
+      <div id="examView" class="view" style="display:none">
+        <h3>Timed 50-question Exam</h3>
+        <div id="examTimer">Time: 50:00</div>
+        <div id="examCard" class="card"></div>
+        <div class="actions"><button id="examNext">Next</button><button id="submitExam">Submit Exam</button></div>
+      </div>
+
+      <div id="favoritesView" class="view" style="display:none">
+        <h3>Favorites</h3>
+        <div id="favoritesList"></div>
+      </div>
+
+      <div id="missedView" class="view" style="display:none">
+        <h3>Missed Questions</h3>
+        <div id="missedList"></div>
+      </div>
+
+      <div id="analyticsView" class="view" style="display:none">
+        <h3>Analytics</h3>
+        <canvas id="analyticsChart" width="600" height="260"></canvas>
+        <div id="stats"></div>
+      </div>
+
+      <div id="settingsView" class="view" style="display:none">
+        <h3>Settings</h3>
+        <button id="resetProgress">Reset Progress</button>
+        <button id="exportData">Export Questions JSON</button>
+        <input id="importFile" type="file" accept="application/json" style="display:none"/>
+        <button id="importBtn">Import Questions JSON</button>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">QuizMaster — advanced exam prep</footer>
+</div>
+<script type="module" src="app.js"></script>
+</body>
+</html>
